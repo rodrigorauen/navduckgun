@@ -54,7 +54,7 @@ class _NavState extends State<Nav> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         backgroundColor: Color(0xFF4D734F),
-        selectedItemColor: Colors.white,
+        selectedItemColor: Color(0xFFFFFFFF),
         unselectedItemColor: Color(0xFF0D0D0D),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
