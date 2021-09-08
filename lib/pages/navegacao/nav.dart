@@ -32,7 +32,7 @@ class _NavState extends State<Nav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFA8BFB2),
+      // backgroundColor: Color(0xFFA8BFB2),
       appBar: AppBar(
         backgroundColor: Color(0xFF4D734F),
         centerTitle: true,

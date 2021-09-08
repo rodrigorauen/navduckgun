@@ -13,10 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Duck Gun',
       theme: ThemeData(
-        primaryColor: Color(0xFFA8BFB2),
+        // primaryColor: Color(0xFFA8BFB2),
         accentColor: Color(0xFF4D734F),
         appBarTheme: AppBarTheme(backgroundColor: Color(0x36402C)),
-        
       ),
       // #A8BFB2 - verde mais clarinho
       // #6C8C74 - verde musgo

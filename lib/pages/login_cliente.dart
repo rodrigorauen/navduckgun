@@ -15,7 +15,7 @@ class _LoginClienteState extends State<LoginCliente> {
   Widget build(BuildContext context) {
     final textStyles = Theme.of(context).textTheme;
     return Scaffold(
-        backgroundColor: Color(0xFFA8BFB2),
+        // backgroundColor: Color(0xFFA8BFB2),
         appBar: AppBar( 
           backgroundColor: Color(0xFF4D734F),
           title: Text('DUCK GUN',
@@ -28,19 +28,24 @@ class _LoginClienteState extends State<LoginCliente> {
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Container(
-            color: Color(0xFFA8BFB2),
+            // color: Color(0xFFA8BFB2),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                      color: Colors.transparent,
-                      child: (Image.asset(
-                        'images/pato2.png',
-                        height: 180,
-                        // width: 180,
-                        alignment: Alignment.center,
-                      ))),
+                    margin: EdgeInsets.all(20),
+                    color: Colors.transparent,
+                    child: CircleAvatar(
+                      radius: 150,
+                      backgroundColor: Color(0xFFA8BFB2),
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage('images/pato2.png'),
+                        backgroundColor: Colors.black,
+                        radius: 140,
+                      ),
+                    ),
+                  ),
                   SizedBox(height: 12),
                   Container(
                       //  color: Colors.green, 
@@ -51,7 +56,7 @@ class _LoginClienteState extends State<LoginCliente> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              Text('Seja Bem-Vindo', style: textStyles.headline5),
+                              Text('Seja Bem-Vindo', style: textStyles.headline5, textAlign: TextAlign.center),
                               SizedBox(height: 12),
                               Row(
                                 children: [
@@ -69,7 +74,11 @@ class _LoginClienteState extends State<LoginCliente> {
                                       keyboardType: TextInputType.name,
                                       decoration: InputDecoration(
                                         labelText: 'Nome',
-                                        border: OutlineInputBorder(),
+                                        border: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.green,
+                                            ),
+                                        ),
                                         errorStyle: TextStyle(
                                             color: Colors.red.shade700),
                                       ),
