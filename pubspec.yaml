@@ -35,6 +35,7 @@ dependencies:
   url_launcher: ^6.0.10
   font_awesome_flutter: ^9.1.0
   flutter_icons: ^ 1.1.0
+  carousel_slider: ^4.0.0
 
 
 dev_dependencies:

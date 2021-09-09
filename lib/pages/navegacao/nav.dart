@@ -15,7 +15,6 @@ class Nav extends StatefulWidget {
   _NavState createState() => _NavState();
 }
 
-
 class _NavState extends State<Nav> {
   late final userController = Provider.of<UserController>(
     context,
@@ -24,9 +23,9 @@ class _NavState extends State<Nav> {
 
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
-    Produtos(),
+    HomePage(),
     Historico(),
     Perfil(),
   ];
@@ -73,8 +72,7 @@ class _NavState extends State<Nav> {
             label: 'Produtos',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.history,
-              size: 35),
+            icon: Icon(Icons.history, size: 35),
             label: 'Histórico',
           ),
           BottomNavigationBarItem(
