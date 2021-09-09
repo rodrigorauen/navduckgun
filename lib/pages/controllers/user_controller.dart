@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:diario_viagens/models/user_model.dart';
+import 'package:duck_gun/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +10,7 @@ enum AuthState { signed, unsigned, loading }
 class UserController extends ChangeNotifier {
   //pra definir que vai comecar com o estado de carregando
   AuthState authState = AuthState.loading;
+  late UserModel model;
 
   //classe que tem mtas funcoes relacionadas a login
   final _auth = FirebaseAuth.instance;
@@ -23,9 +24,11 @@ class UserController extends ChangeNotifier {
 // funcao de escuta, o listen recebe a funcao e vai fazer algo emitido pela funcao authchanges, esse user vai me dizer se tem
 // usuario logado ou nao, só que ele nao vai ter valor assim q inicia. Aqui dentro posso ver se o email é valido tbm..
   UserController() {
-    _auth.authStateChanges().listen((user) {
+    _auth.authStateChanges().listen((user) async {
       if (user != null) {
         authState = AuthState.signed;
+        final data = await _db.collection('usuarios').doc(user.uid).get();
+        model = UserModel.fromMap(data.data()!);
       } else {
         authState = AuthState.unsigned;
       }
@@ -54,23 +57,18 @@ class UserController extends ChangeNotifier {
       String email,
       String senha,
       UserModel payload,
-      // o UserModel na linha de cima substitui o parenteses na linha abaixo
-      // no caso de ser dado simples.. ler o que escrevi no user_model (Map<String, dynamic> payload,
-      // depois ver pagina do signup - tem uma linha comentada
       ) async {
     final credentials = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: senha);
-    // até aqui vai salvar no autentication. O professor vai passar nas proximas aulas o comando para salvar os campos no firestore.
-    // a chave key vai receber o uid:
 
     // o uid vai ser criado
     final uid = credentials.user?.uid;
-    //data vai receber o map com as informcoes extras, no caso nome
+    //data vai receber o map com as informacoes extras, no caso nome
     final data = payload.toMap();
     // a key recebe o user uid
     data['key'] = uid;
-    //crio um doc, na colecao de usuarios usando a colcao com o uid
+    //crio um doc, na colecao de usuarios usando a colecao com o uid
     final doc = _db.collection('usuarios').doc(uid);
     //pra mandar pro firebase
     await doc.set(data);

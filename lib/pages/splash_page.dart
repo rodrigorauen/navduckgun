@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'cadastro_cliente.dart';
 import 'login_cliente.dart';
-import 'navegacao/nav.dart';
 
 bool repet = true;
 
@@ -79,7 +77,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
       Navigator.of(context).pushReplacement(
       MaterialPageRoute(
           // since this triggers when the animation is done, no duration is needed
-          builder: (context) => CadastroCliente()),
+          builder: (context) => LoginCliente()),
     );
     });
     
