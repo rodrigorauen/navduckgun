@@ -15,6 +15,12 @@ class _SignupPageState extends State<SignupPage> {
   String senha = "";
   String registro = "";
   String cpf = "";
+  String endereco = "";
+  String numero = "";
+  String bairro = "";
+  String cidade = "";
+  String estado = "";
+  String cep = "";
 
   late final userController = Provider.of<UserController>(
     context,
@@ -109,6 +115,66 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       SizedBox(height: 12),
                       TextFormField(
+                        onChanged: (texto) => endereco = texto,
+                        keyboardType: TextInputType.name,
+                        decoration: InputDecoration(
+                          labelText: 'Endereço',
+                          border: OutlineInputBorder(),
+                          errorStyle: TextStyle(color: Colors.red.shade700),
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      TextFormField(
+                        onChanged: (texto) => numero = texto,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          labelText: 'Número',
+                          border: OutlineInputBorder(),
+                          errorStyle: TextStyle(color: Colors.red.shade700),
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      TextFormField(
+                        onChanged: (texto) => bairro = texto,
+                        keyboardType: TextInputType.name,
+                        decoration: InputDecoration(
+                          labelText: 'Bairro',
+                          border: OutlineInputBorder(),
+                          errorStyle: TextStyle(color: Colors.red.shade700),
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      TextFormField(
+                        onChanged: (texto) => cidade = texto,
+                        keyboardType: TextInputType.name,
+                        decoration: InputDecoration(
+                          labelText: 'Cidade',
+                          border: OutlineInputBorder(),
+                          errorStyle: TextStyle(color: Colors.red.shade700),
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      TextFormField(
+                        onChanged: (texto) => estado = texto,
+                        keyboardType: TextInputType.name,
+                        decoration: InputDecoration(
+                          labelText: 'Estado',
+                          border: OutlineInputBorder(),
+                          errorStyle: TextStyle(color: Colors.red.shade700),
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      TextFormField(
+                        onChanged: (texto) => cep = texto,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          labelText: 'Cep',
+                          border: OutlineInputBorder(),
+                          errorStyle: TextStyle(color: Colors.red.shade700),
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      TextFormField(
                         obscureText: true,
                         onChanged: (texto) => senha = texto,
                         keyboardType: TextInputType.number,
@@ -130,6 +196,12 @@ class _SignupPageState extends State<SignupPage> {
                               nome: nome,
                               registro: registro,
                               cpf: cpf,
+                              endereco: endereco,
+                              numero: numero,
+                              bairro: bairro,
+                              cidade: cidade,
+                              estado: estado,
+                              cep: cep,
                             );
                             await userController.signup((email), senha, user);
                             Navigator.pop(context);
